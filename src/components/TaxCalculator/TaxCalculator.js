@@ -62,7 +62,7 @@ function TaxCalculator() {
 
     try {
       const response = await fetch(
-        "http://localhost:5001/api/generate-description",
+        "https://unicdrop-backend.onrender.com/api/generate-description",
         {
           method: "POST",
           headers: {
@@ -95,7 +95,7 @@ function TaxCalculator() {
   useEffect(() => {
     if (isSearchFocused && mainProductName && mainProductName.length > 2) {
       fetch(
-        `http://localhost:5001/api/products?search=${encodeURIComponent(
+        `https://unicdrop-backend.onrender.com/api/products?search=${encodeURIComponent(
           mainProductName
         )}`
       )
