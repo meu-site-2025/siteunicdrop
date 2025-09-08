@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.014c67bd.css",
+    "main.js": "/static/js/main.a30d6d9c.js",
+    "static/js/977.19056785.chunk.js": "/static/js/977.19056785.chunk.js",
+    "static/js/455.14827fdc.chunk.js": "/static/js/455.14827fdc.chunk.js",
+    "static/js/453.89689e49.chunk.js": "/static/js/453.89689e49.chunk.js",
+    "static/media/unicdroplogo.png": "/static/media/unicdroplogo.3233071ca39d9b40556d.png",
+    "static/media/elementotresbolhas.png": "/static/media/elementotresbolhas.2e0051ee7cd14c48a6e5.png",
+    "static/media/fotoitalo.png": "/static/media/fotoitalo.8d277fe316e119acbe1b.png",
+    "static/media/thumb-youtube.jpg": "/static/media/thumb-youtube.c30e80d657b6a0e0c475.jpg",
+    "static/media/celular.png": "/static/media/celular.55a36d07092ce7b01d55.png",
+    "static/media/thumb-instagram.jpg": "/static/media/thumb-instagram.79209501363e9660f02b.jpg",
+    "static/media/elementoduasbolhas.png": "/static/media/elementoduasbolhas.893928a2270f4f623c71.png",
+    "static/media/thumb-tiktok.jpg": "/static/media/thumb-tiktok.3978e5252d3cf8c6936f.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.014c67bd.css.map": "/static/css/main.014c67bd.css.map",
+    "main.a30d6d9c.js.map": "/static/js/main.a30d6d9c.js.map",
+    "977.19056785.chunk.js.map": "/static/js/977.19056785.chunk.js.map",
+    "455.14827fdc.chunk.js.map": "/static/js/455.14827fdc.chunk.js.map",
+    "453.89689e49.chunk.js.map": "/static/js/453.89689e49.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.014c67bd.css",
+    "static/js/main.a30d6d9c.js"
+  ]
+}
