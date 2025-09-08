@@ -1,0 +1,64 @@
+.calculator-intro-section {
+  padding: 200px 0 0 0;
+  background-color: #0a192f;
+  background-image:
+    linear-gradient(to right, rgba(67, 180, 224, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(67, 180, 224, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 15% 25%, rgba(67, 180, 224, 0.15), transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(45, 54, 136, 0.15), transparent 35%);
+  background-size: 50px 50px, 50px 50px, 800px 800px, 600px 600px;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+}
+
+.calculator-intro-section .section-title,
+.calculator-intro-section .section-subtitle {
+  color: #ffffff;
+}
+.calculator-intro-section .section-subtitle {
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+}
+
+.intro-card {
+  background-color: rgba(10, 25, 47, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(67, 180, 224, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  color: #ffffff;
+  height: 100%;
+}
+
+.intro-card h3 {
+  font-family: var(--fonte-primaria);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.intro-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #cccccc;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.features-list li {
+  color: #cccccc;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.features-list i {
+  color: var(--ciano);
+  margin-right: 10px;
+}

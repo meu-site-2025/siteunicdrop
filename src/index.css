@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --azul-marinho: #166a8d;
+  --ciano: #43b4e0;
+  --azul-escuro: #2d3688;
+  --branco: #f1f9fe;
+  --preto: #2d2d2d;
+  --fonte-primaria: 'Museo Moderno', sans-serif;
+  --fonte-secundaria: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--branco);
+  color: var(--preto);
+  font-family: var(--fonte-secundaria);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-primaria);
+}

@@ -1,0 +1,148 @@
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #2d3688, #43b4e0);
+  color: #f1f9fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.forma-1, .forma-2 {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  transition: all 0.4s ease;
+}
+.forma-1 {
+  top: 5%;
+  left: 5%;
+  width: 400px;
+  transform: rotate(-30deg);
+}
+.forma-2 {
+  bottom: 5%;
+  right: 5%;
+  width: 350px;
+  transform: rotate(25deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-container h1, .hero-container p {
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-container h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.hero-container p {
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.cta-button {
+  background-color: var(--ciano);
+  color: #f1f9fe;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden; 
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0) 100deg,
+    #ffffff 120deg,
+    var(--azul-marinho) 140deg,
+    rgba(255, 255, 255, 0) 160deg,
+    rgba(255, 255, 255, 0) 360deg
+  );
+  z-index: -1;
+  animation: rotateBorder 4s linear infinite;
+  opacity: 1;
+  transform-origin: center center;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background-color: var(--ciano);
+  border-radius: 50px;
+  z-index: -1;
+}
+
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+.hero-foto-italo {
+  position: absolute;
+  z-index: 1;
+  max-height: 60%;
+  width: auto;
+  bottom: 0;
+  left: 5%;
+}
+
+.hero-foto-celular {
+  position: absolute;
+  z-index: 1;
+  max-height: 70%;
+  width: auto;
+  bottom: -40px;
+  right: 5%;
+}
+
+@media (max-width: 992px) {
+  .hero-foto-italo, .hero-foto-celular {
+    max-height: 45%;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-foto-italo, .hero-foto-celular {
+    display: none;
+  }
+  .forma-1, .forma-2 {
+    opacity: 0.2;
+  }
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+}
