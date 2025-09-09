@@ -15,7 +15,14 @@ function Hero() {
           <div className="col-12">
             <h1>Automatize suas vendas e tenha entregas rápidas com estoque nacional</h1>
             <p>Venda sem estoque!!! Com a Unic Drop, você foca na estratégia enquanto nossa plataforma cuida de toda logística.</p>
-            <button className="cta-button">Quero saber mais</button>
+            <a 
+              href="https://wa.me/5511992885122?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Unic%20Drop."
+              className="cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Quero saber mais
+            </a>
           </div>
         </div>
       </div>

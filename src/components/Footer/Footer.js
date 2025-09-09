@@ -23,27 +23,25 @@ function Footer() {
             <h4 className="footer-col-title">Extras</h4>
             <ul className="footer-links">
               <li><Link to="/calculadora">Calculadora de Taxas</Link></li>
-              <li><a href="#supplier">Seja um fornecedor</a></li>
-              <li><a href="#affiliate">Seja um afiliado <span className="tag-novidade">Novidade</span></a></li>
             </ul>
           </div>
 
           <div className="col-lg-3 col-md-4 footer-col">
             <h4 className="footer-col-title">Suporte</h4>
             <ul className="footer-links">
-              <li><a href="#contact">Contato</a></li>
-              <li><a href="#support">Suporte</a></li>
-              <li><a href="#privacy">Privacidade</a></li>
-              <li><a href="#terms">Termos de uso</a></li>
+              <li><Link to="/contato">Contato</Link></li>
+              <li>Suporte</li>
+              <li>Privacidade</li>
+              <li>Termos de uso</li>
             </ul>
           </div>
 
           <div className="col-lg-3 col-md-4 footer-col">
             <h4 className="footer-col-title">Mais Unic Drop</h4>
             <ul className="footer-links">
-              <li><a href="#supplier">Seja um fornecedor</a></li>
-              <li><a href="#community">Comunidade</a></li>
-              <li><a href="#careers">Carreiras</a></li>
+              <li>Seja um fornecedor</li>
+              <li>Comunidade</li>
+              <li>Carreiras</li>
             </ul>
           </div>
         </div>
@@ -53,13 +51,15 @@ function Footer() {
         <div className="container d-flex justify-content-between align-items-center">
           <p className="mb-0">
             &copy; {currentYear} Unic Drop | 
-            <a href="#privacy" className="footer-bottom-link"> Privacidade e Termos de Uso</a> | 
+            <a href="/privacy" className="footer-bottom-link"> Privacidade e Termos de Uso</a> | 
             CNPJ: 00.000.000/0000-00
           </p>
             <div className="col-md-6 back-to-top-wrapper">
+             <Link to="/#hero">
               <a href="#hero" className="back-to-top-link">
                 Voltar ao topo <i className="bi bi-arrow-up"></i>
               </a>
+             </Link>
             </div>
         </div>
       </div>

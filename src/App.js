@@ -1,7 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
 import Navbar from './components/Navbar/Navbar.js';
 import Footer from './components/Footer/Footer.js';
 import HomePage from './pages/HomePage';
@@ -10,7 +9,7 @@ import ContactPage from './pages/ContactPage.js';
 
 function App() {
   return (
-    <Router basename="/siteunicdrop">
+    <Router>
       <Navbar />
       <main>
         <Routes>

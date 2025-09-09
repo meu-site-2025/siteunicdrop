@@ -68,6 +68,9 @@
   z-index: 1;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
   overflow: hidden; 
+  /* --- AJUSTES PARA O LINK --- */
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  display: inline-block; /* Garante que o link se comporte como um bloco para o padding funcionar perfeitamente */
 }
 
 .cta-button::before {
@@ -107,6 +110,7 @@
 
 .cta-button:hover {
   transform: scale(1.05);
+  color: #f1f9fe; /* Garante que a cor do texto não mude ao passar o mouse */
 }
 
 .hero-foto-italo {
