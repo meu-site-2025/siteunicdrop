@@ -103,6 +103,14 @@
   z-index: -1;
 }
 
+.subtotal-price.profit-item {
+  color: var(--color-profit);
+}
+
+.subtotal-price.loss-item {
+  color: var(--color-loss);
+}
+
 @keyframes rotateBorder {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

@@ -257,3 +257,60 @@
   color: var(--text-primary);
   box-shadow: 0 0 0 2px rgba(67, 180, 224, 0.2);
 }
+
+/* --- Estilo para a caixa de informação (tooltip) --- */
+.info-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-secondary);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.info-tooltip i {
+  color: var(--accent-blue);
+}
+
+/* ============================================== */
+/* === ESTILOS PARA LINHAS DE PRODUTOS === */
+/* ============================================== */
+
+/* Base para todas as linhas de produto */
+.product-row {
+  display: grid;
+  gap: 15px; /* Espaçamento entre os campos */
+  align-items: flex-end; /* Alinha os campos na base, o que fica bom com os labels em cima */
+  margin-bottom: 15px;
+}
+
+/* Define as colunas para a linha do PRODUTO PRINCIPAL */
+.main-product-row {
+  grid-template-columns: 1fr 130px 80px; /* Nome (flexível), Preço (130px), Quantidade (80px) */
+}
+
+/* Define as colunas para as linhas dos PRODUTOS ADICIONAIS (kit) */
+.kit-item-row {
+  grid-template-columns: 1fr 130px 80px auto; /* Nome (flexível), Preço, Qtd, e o botão de remover (tamanho automático) */
+  padding: 15px;
+  background-color: rgba(10, 25, 47, 0.5); /* Fundo para destacar o item do kit */
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+/* Ajusta o form-group dentro das linhas para não ter margem extra */
+.product-row .form-group {
+  margin-bottom: 0;
+}
+
+/* Ajusta o botão de remover */
+.kit-item-row .remove-product-button {
+  width: 100%;
+  height: 35px; /* Mesma altura dos inputs */
+  padding: 5px;
+}

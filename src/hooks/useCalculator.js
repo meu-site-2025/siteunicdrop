@@ -94,27 +94,44 @@ export const useCalculator = (platform) => {
   };
 
   const generateAIDescription = async () => {
-    const product = products[0];
-    if (!product || !product.name) {
+    // Validação inicial no frontend
+    if (!products || products.length === 0 || !products[0].name) {
       setAiDescription("Por favor, selecione ou digite um produto primeiro para gerar a descrição.");
       return;
     }
+    
     setIsGenerating(true);
     setAiDescription("Gerando descrição, por favor, aguarde...");
+    
     try {
+      // Prepara os dados no NOVO formato que o backend espera
+      const payload = {
+        products: products.map(p => ({ 
+          name: p.name, 
+          quantity: p.quantity ? parseInt(p.quantity, 10) : 1 
+        })),
+        totalPrice: result.recommendedPrice 
+      };
+
       const response = await fetch("https://unicdrop-backend.onrender.com/api/generate-description", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productName: product.name, productPrice: recommendedPrice }),
+        // Envia o payload completo e formatado corretamente
+        body: JSON.stringify(payload),
       });
+
       if (!response.ok) {
-        throw new Error("Erro ao se conectar com a API de geração de descrição.");
+        // Se a resposta não for OK, tenta ler a mensagem de erro do backend
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Erro na comunicação com a API.");
       }
+
       const data = await response.json();
       setAiDescription(data.description || "");
     } catch (error) {
       console.error("Erro na chamada da API:", error);
-      setAiDescription("Ocorreu um erro ao gerar a descrição. Tente novamente mais tarde.");
+      // Mostra uma mensagem mais específica se possível
+      setAiDescription(`Ocorreu um erro: ${error.message} Tente novamente mais tarde.`);
     } finally {
       setIsGenerating(false);
     }
@@ -162,7 +179,12 @@ export const useCalculator = (platform) => {
     let finalPrice = parseFloat(String(recommendedPrice).replace(/[^0-9,.-]/g, "").replace(",", ".")) || 0;
     let cleanDesiredProfitMargin = (parseFloat(String(desiredProfitMargin).replace(/[^0-9,.-]/g, "").replace(",", ".")) / 100) || 0;
 
-    if (lastUpdatedField.current !== 'recommendedPrice' && lastUpdatedField.current !== 'taxRate') {
+    // =========================================================================
+    // === ALTERAÇÃO PRINCIPAL AQUI ===
+    // Agora, o cálculo direto (que define o preço de venda) roda sempre que o 
+    // último campo alterado NÃO FOR o próprio 'recommendedPrice'.
+    // =========================================================================
+    if (lastUpdatedField.current !== 'recommendedPrice') {
       const totalFeesAndMargin = commissionRate + cleanTaxRate + cleanDesiredProfitMargin;
       if (totalFeesAndMargin >= 1) {
         setRecommendedPrice("Margem impossível!");
@@ -211,7 +233,9 @@ export const useCalculator = (platform) => {
     const expectedProfit = finalPrice - kitSubtotal - commissionValue - taxValue - fixedFee - shippingCost;
     const profitMarginPercent = finalPrice > 0 ? (expectedProfit / finalPrice) * 100 : 0;
     
-    if (lastUpdatedField.current === 'recommendedPrice' || lastUpdatedField.current === 'taxRate') {
+    // O cálculo reverso (que define o lucro) só roda se o último campo
+    // alterado FOI o 'recommendedPrice'.
+    if (lastUpdatedField.current === 'recommendedPrice') {
       setDesiredProfitMargin(profitMarginPercent.toFixed(2));
     }
     
@@ -222,9 +246,11 @@ export const useCalculator = (platform) => {
     if(platform === 'mercadoLivre') breakdown.push({ name: `Taxa ML (${listingType === "classico" ? "12%" : "17%"})`, value: commissionValue });
     if(platform === 'shopee') breakdown.push({ name: "Taxa Shopee (20%)", value: commissionValue });
     if(platform === 'amazon') breakdown.push({ name: "Taxa Amazon (15%)", value: commissionValue });
-    breakdown.push({ name: `Imposto (${taxRate}%)`, value: taxValue });
+    breakdown.push({ name: `Imposto (${taxRate}%)`, value: taxValue, isTax: true });
     if (fixedFee > 0) breakdown.push({ name: "Taxa Fixa", value: fixedFee });
-    if (shippingApplied) breakdown.push({ name: "Custo Frete (Frete Grátis)", value: shippingCost });
+    if (shippingApplied) {
+        breakdown.push({ name: "Custo Frete (Frete Grátis)", value: shippingCost, isShipping: true });
+    }
     breakdown.push({ name: "Lucro Esperado", value: expectedProfit, isProfit: true });
 
     setResult({ recommendedPrice: finalPrice, expectedProfit, profitMargin: profitMarginPercent, breakdown, shippingApplied });

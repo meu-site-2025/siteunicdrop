@@ -20,15 +20,10 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
   } = calculator;
 
   const showResults = parseFloat(String(products[0].price).replace(',', '.')) > 0;
-  const kitSubtotal = products.reduce((sum, product) => sum + ((parseFloat(String(product.price).replace(',', '.')) || 0) * (parseInt(product.quantity, 10) || 1)), 0) + (showResults ? 3.0 : 0);
 
   return (
     <section className="calculator-section" id="calculator">
       <div className="container">
-
-        {/* ======================================================= */}
-        {/* === CARROSSEL ADICIONADO AQUI, BEM NO TOPO === */}
-        {/* ======================================================= */}
         <AdCarousel />
 
         <h2 className="section-title text-center">Calculadora de Taxas - {title}</h2>
@@ -37,18 +32,16 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
           <div className="row">
             <div className="col-lg-7">
               <div className="input-panel">
-                
-                 <div className="form-group search-group">
-                  <label>Nome do produto</label>
-                  <input type="text" value={products[0].name} onChange={(e) => setProducts([{ ...products[0], name: e.target.value }])} onFocus={() => setIsSearchFocused(0)} onBlur={() => setTimeout(() => setIsSearchFocused(null), 200)} placeholder="Comece a digitar para pesquisar..." />
-                  {isSearchFocused === 0 && searchResults.length > 0 && (
-                    <ul className="search-results">
-                      {searchResults.map((p) => (<li key={p.sku} onClick={() => handleProductSelect(p, 0)}>{p.name}</li>))}
-                    </ul>
-                  )}
-                </div>
-
-                <div className="form-group-inline main-product-inputs">
+                <div className="product-row main-product-row">
+                  <div className="form-group search-group">
+                    <label>Nome do produto</label>
+                    <input type="text" value={products[0].name} onChange={(e) => setProducts([{ ...products[0], name: e.target.value }])} onFocus={() => setIsSearchFocused(0)} onBlur={() => setTimeout(() => setIsSearchFocused(null), 200)} placeholder="Comece a digitar para pesquisar..." />
+                    {isSearchFocused === 0 && searchResults.length > 0 && (
+                      <ul className="search-results">
+                        {searchResults.map((p) => (<li key={p.sku} onClick={() => handleProductSelect(p, 0)}>{p.name}</li>))}
+                      </ul>
+                    )}
+                  </div>
                   <div className="form-group">
                     <label>Preço por unidade</label>
                     <div className="input-with-icon">
@@ -61,13 +54,10 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                     <input type="number" min="1" placeholder="1" value={products[0].quantity} onChange={(e) => handleNumericInputChange(e, (val) => setProducts((current) => [{ ...current[0], quantity: val }]), "productQuantity")} />
                   </div>
                 </div>
-
-
-
                 {products.map((product, index) => {
                   if (index === 0) return null;
                   return (
-                    <div className="kit-item-container" key={index}>
+                    <div className="product-row kit-item-row" key={index}>
                       <div className="form-group search-group">
                         <label>Nome do {index + 1}º produto</label>
                         <input type="text" value={product.name} onChange={(e) => setProducts(products.map((p, i) => i === index ? { ...p, name: e.target.value } : p))} onFocus={() => setIsSearchFocused(index)} onBlur={() => setTimeout(() => setIsSearchFocused(null), 200)} placeholder={`Ex: Caneca Preta`} />
@@ -77,15 +67,23 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                           </ul>
                         )}
                       </div>
-                      <div className="kit-item-details">
-                        <div className="form-group"><label>Preço</label><div className="input-with-icon"><span>R$</span><input type="text" value={product.price} onChange={(e) => handleNumericInputChange(e, (val) => setProducts(products.map((p, i) => i === index ? { ...p, price: val } : p)), "productPrice")} placeholder="0,00" /></div></div>
-                        <div className="form-group"><label>Qtd.</label><input type="number" min="1" value={product.quantity} onChange={(e) => handleNumericInputChange(e, (val) => setProducts(products.map((p, i) => i === index ? { ...p, quantity: val } : p)), "productQuantity")} placeholder="1" /></div>
-                        <div className="form-group"><button type="button" className="remove-product-button" onClick={() => setProducts(products.filter((_, i) => i !== index))}><i className="bi bi-trash"></i> Remover</button></div>
+                      <div className="form-group">
+                        <label>Preço</label>
+                        <div className="input-with-icon">
+                          <span>R$</span>
+                          <input type="text" value={product.price} onChange={(e) => handleNumericInputChange(e, (val) => setProducts(products.map((p, i) => i === index ? { ...p, price: val } : p)), "productPrice")} placeholder="0,00" />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label>Qtd.</label>
+                        <input type="number" min="1" value={product.quantity} onChange={(e) => handleNumericInputChange(e, (val) => setProducts(products.map((p, i) => i === index ? { ...p, quantity: val } : p)), "productQuantity")} placeholder="1" />
+                      </div>
+                      <div className="form-group">
+                         <button type="button" className="remove-product-button" onClick={() => setProducts(products.filter((_, i) => i !== index))}><i className="bi bi-trash"></i> Remover</button>
                       </div>
                     </div>
                   );
                 })}
-
                 {showResults && (
                   <div className="form-group">
                     <button className="add-product-button" onClick={addProductToKit}>
@@ -94,7 +92,7 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                   </div>
                 )}
                 
-                {platform === 'mercadoLivre' && (<div className="form-group"><label>Custo do Frete</label><div className="input-with-icon"><span>R$</span><input type="text" value={shippingCostValue} onChange={(e) => handleNumericInputChange(e, setShippingCostValue, "shippingCost")} disabled={result.recommendedPrice < 79} placeholder="17,00" /></div><small className={`form-text-muted ${result.shippingApplied ? "is-editable" : ""}`}>Altere conforme o valor real que o ML te ofereceu.</small></div>)}
+                {/* --- CAMPO DE CUSTO DO FRETE FOI REMOVIDO DAQUI --- */}
                 
                 <div className="form-group"><label>Lucro desejado (%)</label><div className="input-with-icon-right"><input type="text" value={desiredProfitMargin} onChange={(e) => handleNumericInputChange(e, setDesiredProfitMargin, "desiredProfitMargin")} /><span>%</span></div></div>
 
@@ -103,9 +101,13 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
             </div>
             <div className="col-lg-5">
               <div className="result-panel" ref={resultPanelRef}>
-                <div className="result-header"><div className="result-label">Custo total (Produtos + Despesas)</div><div className="subtotal-price">{formatCurrency(kitSubtotal)}</div></div>
+                <div className="result-header">
+                  <div className="result-label">Lucro Esperado</div>
+                  <div className={`subtotal-price ${result.expectedProfit >= 0 ? 'profit-item' : 'loss-item'}`}>
+                    {formatCurrency(result.expectedProfit)}
+                  </div>
+                </div>
                 <hr className="result-divider" />
-
                 {platform === 'mercadoLivre' && (
                   <div className="form-group">
                     <label>Tipo de anúncio</label>
@@ -115,7 +117,6 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                     </div>
                   </div>
                 )}
-
                 <div className="form-group">
                   <label>Valor de venda</label>
                   <div className="input-with-icon">
@@ -126,33 +127,57 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                       onChange={(e) => handleNumericInputChange(e, setRecommendedPrice, 'recommendedPrice')}
                     />
                   </div>
+                  <small className="info-tooltip">
+                    <i className="bi bi-info-circle-fill"></i> Para editar, digite apenas números. Ponto e vírgula não são permitidos!
+                  </small>
                 </div>
                 <hr className="result-divider" />
                 <ul className="result-breakdown">
-                  {result.breakdown.map((item, index) => {
-                    if (item.name.startsWith('Imposto')) {
+                  {result.breakdown
+                    .filter(item => !item.isProfit)
+                    .map((item, index) => {
+                      if (item.isTax) { // Para o imposto
+                        return (
+                          <li key={index}>
+                            <span className="editable-label">
+                              Imposto (&nbsp;
+                              <input
+                                type="text"
+                                value={taxRate}
+                                onChange={(e) => handleNumericInputChange(e, setTaxRate, "taxRate")}
+                                className="result-breakdown-input"
+                              />
+                              &nbsp;%)
+                            </span>
+                            <span>{formatCurrency(item.value)}</span>
+                          </li>
+                        );
+                      }
+                      
+                      // --- LÓGICA ADICIONADA PARA O FRETE EDITÁVEL ---
+                      if (item.isShipping) {
+                        return (
+                          <li key={index}>
+                            <span className="editable-label">
+                              Custo Frete&nbsp;
+                              <input
+                                type="text"
+                                value={shippingCostValue}
+                                onChange={(e) => handleNumericInputChange(e, setShippingCostValue, "shippingCost")}
+                                className="result-breakdown-input"
+                              />
+                            </span>
+                            <span>{formatCurrency(item.value)}</span>
+                          </li>
+                        );
+                      }
+
                       return (
                         <li key={index}>
-                          <span className="editable-label">
-                            Imposto (&nbsp;
-                            <input
-                              type="text"
-                              value={taxRate}
-                              onChange={(e) => handleNumericInputChange(e, setTaxRate, "taxRate")}
-                              className="result-breakdown-input"
-                            />
-                            &nbsp;%)
-                          </span>
+                          <span>{item.name}</span>
                           <span>{formatCurrency(item.value)}</span>
                         </li>
                       );
-                    }
-                    return (
-                      <li key={index} className={item.isProfit ? (item.value >= 0 ? "profit-item" : "loss-item") : ""}>
-                        <span>{item.name}</span>
-                        <span>{formatCurrency(item.value)}</span>
-                      </li>
-                    );
                   })}
                 </ul>
                 <button onClick={generateAIDescription} className="ai-button" disabled={isGenerating}>{isGenerating ? (<><span className="spinner"></span> Gerando...</>) : (<><i className="bi bi-magic"></i> Gerar Descrição com IA</>)}</button>
