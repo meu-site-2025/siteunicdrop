@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/siteunicdrop/static/css/main.2540c3bd.css",
-    "main.js": "/siteunicdrop/static/js/main.deed08ca.js",
+    "main.css": "/siteunicdrop/static/css/main.8ec5e373.css",
+    "main.js": "/siteunicdrop/static/js/main.9c53c6c0.js",
     "static/js/977.19056785.chunk.js": "/siteunicdrop/static/js/977.19056785.chunk.js",
     "static/js/455.14827fdc.chunk.js": "/siteunicdrop/static/js/455.14827fdc.chunk.js",
     "static/js/453.89689e49.chunk.js": "/siteunicdrop/static/js/453.89689e49.chunk.js",
     "static/media/unicdroplogo.png": "/siteunicdrop/static/media/unicdroplogo.3233071ca39d9b40556d.png",
     "static/media/elementotresbolhas.png": "/siteunicdrop/static/media/elementotresbolhas.2e0051ee7cd14c48a6e5.png",
     "static/media/fotoitalo.png": "/siteunicdrop/static/media/fotoitalo.8d277fe316e119acbe1b.png",
+    "static/media/publi3.jpg": "/siteunicdrop/static/media/publi3.b0229ad6dde96550153b.jpg",
+    "static/media/ml-logo.png": "/siteunicdrop/static/media/ml-logo.7175067fa4ba6b122997.png",
+    "static/media/shopee-logo.png": "/siteunicdrop/static/media/shopee-logo.290bdf490134a6553146.png",
+    "static/media/publi1.jpg": "/siteunicdrop/static/media/publi1.8bc41c57fdef58179ba4.jpg",
+    "static/media/publi2.jpg": "/siteunicdrop/static/media/publi2.34ae2a7e17d411a435fb.jpg",
     "static/media/thumb-youtube.jpg": "/siteunicdrop/static/media/thumb-youtube.c30e80d657b6a0e0c475.jpg",
     "static/media/celular.png": "/siteunicdrop/static/media/celular.55a36d07092ce7b01d55.png",
+    "static/media/amazon-logo.png": "/siteunicdrop/static/media/amazon-logo.089e1c142cde2bcb96bc.png",
     "static/media/thumb-instagram.jpg": "/siteunicdrop/static/media/thumb-instagram.79209501363e9660f02b.jpg",
     "static/media/elementoduasbolhas.png": "/siteunicdrop/static/media/elementoduasbolhas.893928a2270f4f623c71.png",
     "static/media/thumb-tiktok.jpg": "/siteunicdrop/static/media/thumb-tiktok.3978e5252d3cf8c6936f.jpg",
@@ -18,14 +24,14 @@
     "static/media/slick.ttf": "/siteunicdrop/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/siteunicdrop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/siteunicdrop/index.html",
-    "main.2540c3bd.css.map": "/siteunicdrop/static/css/main.2540c3bd.css.map",
-    "main.deed08ca.js.map": "/siteunicdrop/static/js/main.deed08ca.js.map",
+    "main.8ec5e373.css.map": "/siteunicdrop/static/css/main.8ec5e373.css.map",
+    "main.9c53c6c0.js.map": "/siteunicdrop/static/js/main.9c53c6c0.js.map",
     "977.19056785.chunk.js.map": "/siteunicdrop/static/js/977.19056785.chunk.js.map",
     "455.14827fdc.chunk.js.map": "/siteunicdrop/static/js/455.14827fdc.chunk.js.map",
     "453.89689e49.chunk.js.map": "/siteunicdrop/static/js/453.89689e49.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2540c3bd.css",
-    "static/js/main.deed08ca.js"
+    "static/css/main.8ec5e373.css",
+    "static/js/main.9c53c6c0.js"
   ]
 }
