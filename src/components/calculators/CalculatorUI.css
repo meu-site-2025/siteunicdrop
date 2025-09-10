@@ -1,0 +1,259 @@
+:root {
+  --background-dark: #0a192f;
+  --panel-background: #0d2542;
+  --border-light: #2b4b74;
+  --text-primary: #ffffff;
+  --text-secondary: #c2c2c2;
+  --accent-blue: #43b4e0;
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --color-profit: #2ecc71;
+  --color-loss: #e74c3c;
+}
+
+/* Base da Calculadora e Painéis */
+.calculator-section { 
+  padding: 150px 0;
+  background-color: var(--background-dark); 
+}
+.calculator-body {
+  background-color: var(--panel-background);
+  border-radius: 12px;
+  padding: 25px; /* --- AJUSTE: Mais padding interno para preencher o novo espaço --- */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  max-width: 1500px; /* --- AJUSTE PRINCIPAL: Calculadora muito mais larga! --- */
+  margin: 0 auto;
+}
+.input-panel {
+  padding-right: 30px; /* --- AJUSTE: Mais espaço entre as colunas para a nova largura --- */
+} 
+.result-panel { 
+  background-color: var(--background-dark); 
+  border: 1px solid var(--border-light); 
+  border-radius: 10px; 
+  padding: 20px;
+  text-align: center; 
+  height: 100%; 
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); 
+  display: flex; 
+  flex-direction: column; 
+}
+
+/* Grupos de Formulário e Inputs */
+.form-group { margin-bottom: 10px; position: relative; }
+.form-group label { 
+  display: block; 
+  color: var(--text-secondary);
+  margin-bottom: 4px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  text-align: left;
+}
+.form-group input { 
+  width: 100%; 
+  background-color: var(--background-dark); 
+  border: 1px solid var(--border-light); 
+  border-radius: 6px; 
+  padding: 6px 10px; 
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+.form-group input:disabled { background-color: #173456; cursor: not-allowed; }
+.input-with-icon, .input-with-icon-right { position: relative; display: flex; align-items: center; }
+.input-with-icon span, .input-with-icon-right span { position: absolute; color: var(--text-secondary); }
+.input-with-icon input { padding-left: 28px; }
+.input-with-icon span { left: 8px; }
+.input-with-icon-right input { padding-right: 28px; }
+.input-with-icon-right span { right: 8px; }
+.form-text-muted { font-size: 0.7rem; color: var(--text-secondary); margin-top: 3px; display: block; }
+.form-text-muted.is-editable { color: #ffd900; font-weight: 500; }
+
+/* Inputs em Linha */
+.form-group-inline.main-product-inputs { 
+  display: grid; 
+  grid-template-columns: 1fr 70px; 
+  gap: 8px; 
+  align-items: flex-end; 
+}
+.form-group-inline.main-product-inputs .form-group { margin-bottom: 0; }
+.form-group-inline.kit-product-inputs { 
+  display: grid; 
+  grid-template-columns: 1fr 70px 50px auto; 
+  gap: 8px; 
+  align-items: flex-end; 
+  margin-bottom: 12px; 
+}
+.form-group-inline .form-group { margin: 0; }
+
+/* Botões e Interações */
+.choice-buttons { display: flex; gap: 8px; }
+.choice-buttons button { 
+  flex: 1; 
+  padding: 6px; 
+  border: 1px solid var(--border-light); 
+  background-color: var(--background-dark); 
+  color: var(--text-secondary);
+  border-radius: 6px; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  font-size: 0.75rem;
+}
+.choice-buttons button:hover { border-color: var(--accent-blue); }
+.choice-buttons button.active { 
+  background-color: var(--accent-blue); 
+  color: var(--background-dark);
+  border-color: var(--accent-blue); 
+}
+
+.clear-calculator-button, .add-product-button { 
+  width: 100%; 
+  padding: 8px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  border: none; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 6px; 
+  font-family: var(--font-primary); 
+  font-weight: 600; 
+  font-size: 0.8rem;
+}
+.clear-calculator-button { background-color: #34495e; color: #fff; }
+.add-product-button { border: 2px dashed rgba(67, 180, 224, 0.4); background-color: transparent; color: var(--text-secondary); }
+
+/* Botões de Ação */
+.ai-button, .download-pdf-button {
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.ai-button { background-color: #2b4b74; color: var(--text-primary); margin-top: 6px; }
+.download-pdf-button { background-color: var(--accent-blue); color: var(--background-dark); margin-top: 6px; }
+
+.remove-product-button {
+    background: var(--color-loss);
+    color: #fff;
+    padding: 5px 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+}
+.remove-product-button i { font-size: 0.8rem; }
+
+/* Resultados */
+.result-header { margin-bottom: 10px; }
+.subtotal-price { font-size: 1.3rem; color: var(--text-primary); }
+.result-label { color: var(--text-secondary); font-size: 0.75rem; }
+.result-divider { border-color: var(--border-light); margin: 10px 0; }
+.result-breakdown { list-style: none; padding: 0; text-align: left; }
+.result-breakdown li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; color: var(--text-secondary); font-size: 0.8rem; }
+.result-breakdown li.profit-item { font-weight: 700; color: var(--color-profit); }
+.result-breakdown li.loss-item { font-weight: 700; color: var(--color-loss); }
+.result-panel .form-group input { 
+  font-family: var(--font-primary); 
+  font-size: 1.4rem; 
+  font-weight: 700; 
+  color: var(--accent-blue); 
+  text-align: center; 
+  padding: 8px; 
+  height: auto; 
+  background-color: #081428; 
+}
+
+/* Busca */
+.search-group { position: relative; }
+.search-results {
+  position: absolute; top: 100%; left: 0; width: 100%;
+  background-color: var(--panel-background); border: 1px solid var(--border-light);
+  border-radius: 6px; max-height: 150px; overflow-y: auto;
+  list-style: none; padding: 0; z-index: 1000;
+}
+.search-results li { padding: 8px 10px; cursor: pointer; transition: background-color 0.2s ease; color: var(--text-primary); font-size: 0.8rem; }
+.search-results li:hover { background-color: rgba(67, 180, 224, 0.15); color: var(--accent-blue); }
+
+/* Caixa de Descrição da IA */
+.ai-description-box { margin-top: 12px; width: 100%; }
+.ai-description-box textarea { 
+  width: 100%; 
+  min-height: 90px; 
+  resize: vertical; 
+  background-color: var(--background-dark); 
+  border: 1px solid var(--border-light); 
+  border-radius: 6px; 
+  padding: 10px; 
+  color: var(--text-primary); 
+  font-family: var(--font-secondary); 
+  font-size: 0.85rem; 
+  line-height: 1.4; 
+}
+.ai-description-box textarea:focus { 
+  outline: none; 
+  border-color: var(--accent-blue); 
+  box-shadow: 0 0 0 2px rgba(67, 180, 224, 0.2); 
+}
+
+/* Seletor de Anúncio no Painel de Resultado */
+.result-panel .form-group { margin-bottom: 10px; }
+.result-panel .listing-type-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.result-panel .listing-type-option { 
+  background-color: var(--background-dark); 
+  border: 1px solid var(--border-light); 
+  border-radius: 6px; 
+  padding: 6px; 
+  text-align: center; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+}
+.result-panel .listing-type-option:hover { border-color: var(--accent-blue); }
+.result-panel .listing-type-option.active { background-color: var(--accent-blue); border-color: var(--accent-blue); }
+.result-panel .listing-type-option.active i, .result-panel .listing-type-option.active h4 { color: var(--background-dark); }
+.result-panel .listing-type-option i { font-size: 1rem; color: var(--accent-blue); margin-bottom: 3px; }
+.result-panel .listing-type-option h4 { margin: 0; font-size: 0.65rem; color: var(--text-primary); }
+
+/* Estilos para destacar o imposto */
+.editable-label {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: #ffd900;
+  font-weight: 600;
+}
+
+.result-breakdown-input {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-light);
+  color: inherit;
+  width: 40px;
+  text-align: center;
+  padding: 2px 4px;
+  margin: 0 3px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.result-breakdown-input:focus {
+  outline: none;
+  background-color: var(--background-dark);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 2px rgba(67, 180, 224, 0.2);
+}

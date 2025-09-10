@@ -1,5 +1,5 @@
-.hero-container {
-  height: 100vh;
+.hero-container { 
+  min-height: 120vh;
   width: 100%;
   background: linear-gradient(135deg, #2d3688, #43b4e0);
   color: #f1f9fe;
@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 20px; /* mobile-first */
   position: relative;
   overflow: hidden;
 }
@@ -21,33 +21,34 @@
 .forma-1 {
   top: 5%;
   left: 5%;
-  width: 400px;
+  width: 250px;
   transform: rotate(-30deg);
 }
 .forma-2 {
   bottom: 5%;
   right: 5%;
-  width: 350px;
+  width: 200px;
   transform: rotate(25deg);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  max-width: 100%;
 }
 
 .hero-container h1, .hero-container p {
-  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero-container h1 {
-  font-size: clamp(2.5rem, 5vw + 1rem, 3.5rem);
+  font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 900;
   margin-bottom: 20px;
 }
 
 .hero-container p {
-  font-size: clamp(1rem, 1vw + 0.5rem, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto 30px auto;
 }
@@ -56,11 +57,11 @@
   background-color: var(--ciano);
   color: #f1f9fe;
   border: none;
-  padding: 18px 40px;
+  padding: 15px 30px;
   border-radius: 50px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -68,9 +69,8 @@
   z-index: 1;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
   overflow: hidden; 
-  /* --- AJUSTES PARA O LINK --- */
-  text-decoration: none; /* Remove o sublinhado padrão dos links */
-  display: inline-block; /* Garante que o link se comporte como um bloco para o padding funcionar perfeitamente */
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cta-button::before {
@@ -110,7 +110,7 @@
 
 .cta-button:hover {
   transform: scale(1.05);
-  color: #f1f9fe; /* Garante que a cor do texto não mude ao passar o mouse */
+  color: #f1f9fe;
 }
 
 .hero-foto-italo {
@@ -118,7 +118,7 @@
   z-index: 1;
   max-height: 60%;
   width: auto;
-  bottom: 0;
+  bottom: -2%;
   left: 5%;
 }
 
@@ -127,26 +127,44 @@
   z-index: 1;
   max-height: 70%;
   width: auto;
-  bottom: -40px;
+  bottom: -60px;
   right: 5%;
 }
 
-@media (max-width: 992px) {
-  .hero-foto-italo, .hero-foto-celular {
-    max-height: 45%;
-    bottom: 0;
-  }
-}
 
+/* Tablets e Mobile */
 @media (max-width: 768px) {
+  /* --- AJUSTE AQUI --- */
+  .hero-container {
+    min-height: 75vh; /* Reduz a altura mínima para se ajustar à tela */
+  }
+
   .hero-foto-italo, .hero-foto-celular {
     display: none;
   }
+
   .forma-1, .forma-2 {
-    opacity: 0.2;
+    opacity: 0.3;
+    width: 300px;
   }
+
   .cta-button {
-    padding: 15px 30px;
-    font-size: 1rem;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktops */
+@media (min-width: 1200px) {
+  .hero-container {
+    padding: 0 200px;
+  }
+
+  .forma-1 {
+    width: 400px;
+  }
+
+  .forma-2 {
+    width: 350px;
   }
 }

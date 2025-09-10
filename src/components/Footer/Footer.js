@@ -55,11 +55,12 @@ function Footer() {
             CNPJ: 00.000.000/0000-00
           </p>
             <div className="col-md-6 back-to-top-wrapper">
-             <Link to="/#hero">
-              <a href="#hero" className="back-to-top-link">
+              <button 
+                className="back-to-top-link" 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
                 Voltar ao topo <i className="bi bi-arrow-up"></i>
-              </a>
-             </Link>
+              </button>
             </div>
         </div>
       </div>

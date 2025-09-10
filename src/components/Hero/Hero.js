@@ -1,15 +1,14 @@
-import './Hero.css';
+import './Hero.css'; 
 import Forma1 from '../../assets/images/elementotresbolhas.png';
 import Forma2 from '../../assets/images/elementoduasbolhas.png';
 import FotoItalo from '../../assets/images/fotoitalo.png';
 import Celular from '../../assets/images/celular.png';
-
 function Hero() {
   return (
     <section className="hero-container" id="hero">
       <img src={Forma1} alt="Elemento decorativo de três bolhas" className="forma-1" />
       <img src={Forma2} alt="Elemento decorativo de duas bolhas" className="forma-2" />
-
+      
       <div className="container hero-content">
         <div className="row">
           <div className="col-12">

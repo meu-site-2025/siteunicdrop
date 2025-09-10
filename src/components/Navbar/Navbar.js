@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// 1. Importe o HashLink e o renomeie para Link para não precisar mudar o resto do código
+import { HashLink as Link } from 'react-router-hash-link'; 
+import { useLocation } from 'react-router-dom';
 import './Navbar.css';
 import UnicDropLogo from '../../assets/images/unicdroplogo.png';
 
@@ -18,18 +20,20 @@ function Navbar() {
     };
   }, []);
 
+  // 2. Simplificamos este useEffect
   useEffect(() => {
+    // Apenas fecha o menu mobile ao navegar
     setMenuOpen(false);
 
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    } else {
+    // A lógica de rolagem para o HASH (`#ToolsSection`) agora é 
+    // controlada automaticamente pelo HashLink que importamos.
+
+    // Esta parte continua útil para rolar ao topo quando não há um hash.
+    if (!location.hash) {
+      // Usamos um pequeno timeout para garantir que a transição de página termine
+      setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 0);
     }
   }, [location]);
 
@@ -40,14 +44,16 @@ function Navbar() {
   return (
     <nav className={`custom-navbar ${isSticky ? 'sticky' : ''}`}>
       <div className="navbar-content">
-        <Link to="/#hero">
+        {/* Usamos o 'smooth' para que a rolagem para o #hero também seja suave */}
+        <Link smooth to="/#hero">
           <img src={UnicDropLogo} alt="Logo Unic Drop" className="navbar-logo" />
         </Link>
         <div className="nav-right">
           <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-            <li><Link to="/#benefits">Benefícios</Link></li>
-            <li><Link to="/calculadora">Calculadora de Taxas</Link></li>
-            <li><Link to="/#features">Funcionalidades</Link></li>
+            {/* Adicionamos a propriedade 'smooth' para ativar a rolagem suave */}
+            <li><Link smooth to="/#benefits">Benefícios</Link></li>
+            <li><Link smooth to="/#ToolsSection">Calculadora de Taxas</Link></li>
+            <li><Link smooth to="/#features">Funcionalidades</Link></li>
             <li><Link to="/contato">Contato</Link></li>
             <li><a href="https://app.unicdrop.com.br/login" target="_blank" rel="noopener noreferrer">Área do Cliente</a></li>
           </ul>
