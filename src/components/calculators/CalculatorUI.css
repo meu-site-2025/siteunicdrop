@@ -11,7 +11,6 @@
   --color-loss: #e74c3c;
 }
 
-/* Base da Calculadora e Painéis */
 .calculator-section { 
   padding: 150px 0;
   background-color: var(--background-dark); 
@@ -19,13 +18,13 @@
 .calculator-body {
   background-color: var(--panel-background);
   border-radius: 12px;
-  padding: 25px; /* --- AJUSTE: Mais padding interno para preencher o novo espaço --- */
+  padding: 25px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  max-width: 1500px; /* --- AJUSTE PRINCIPAL: Calculadora muito mais larga! --- */
+  max-width: 1500px;
   margin: 0 auto;
 }
 .input-panel {
-  padding-right: 30px; /* --- AJUSTE: Mais espaço entre as colunas para a nova largura --- */
+  padding-right: 30px;
 } 
 .result-panel { 
   background-color: var(--background-dark); 
@@ -39,7 +38,6 @@
   flex-direction: column; 
 }
 
-/* Grupos de Formulário e Inputs */
 .form-group { margin-bottom: 10px; position: relative; }
 .form-group label { 
   display: block; 
@@ -68,7 +66,6 @@
 .form-text-muted { font-size: 0.7rem; color: var(--text-secondary); margin-top: 3px; display: block; }
 .form-text-muted.is-editable { color: #ffd900; font-weight: 500; }
 
-/* Inputs em Linha */
 .form-group-inline.main-product-inputs { 
   display: grid; 
   grid-template-columns: 1fr 70px; 
@@ -85,7 +82,6 @@
 }
 .form-group-inline .form-group { margin: 0; }
 
-/* Botões e Interações */
 .choice-buttons { display: flex; gap: 8px; }
 .choice-buttons button { 
   flex: 1; 
@@ -122,7 +118,6 @@
 .clear-calculator-button { background-color: #34495e; color: #fff; }
 .add-product-button { border: 2px dashed rgba(67, 180, 224, 0.4); background-color: transparent; color: var(--text-secondary); }
 
-/* Botões de Ação */
 .ai-button, .download-pdf-button {
     width: 100%;
     padding: 6px;
@@ -157,7 +152,6 @@
 }
 .remove-product-button i { font-size: 0.8rem; }
 
-/* Resultados */
 .result-header { margin-bottom: 10px; }
 .subtotal-price { font-size: 1.3rem; color: var(--text-primary); }
 .result-label { color: var(--text-secondary); font-size: 0.75rem; }
@@ -177,7 +171,6 @@
   background-color: #081428; 
 }
 
-/* Busca */
 .search-group { position: relative; }
 .search-results {
   position: absolute; top: 100%; left: 0; width: 100%;
@@ -188,7 +181,6 @@
 .search-results li { padding: 8px 10px; cursor: pointer; transition: background-color 0.2s ease; color: var(--text-primary); font-size: 0.8rem; }
 .search-results li:hover { background-color: rgba(67, 180, 224, 0.15); color: var(--accent-blue); }
 
-/* Caixa de Descrição da IA */
 .ai-description-box { margin-top: 12px; width: 100%; }
 .ai-description-box textarea { 
   width: 100%; 
@@ -209,7 +201,6 @@
   box-shadow: 0 0 0 2px rgba(67, 180, 224, 0.2); 
 }
 
-/* Seletor de Anúncio no Painel de Resultado */
 .result-panel .form-group { margin-bottom: 10px; }
 .result-panel .listing-type-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .result-panel .listing-type-option { 
@@ -227,7 +218,6 @@
 .result-panel .listing-type-option i { font-size: 1rem; color: var(--accent-blue); margin-bottom: 3px; }
 .result-panel .listing-type-option h4 { margin: 0; font-size: 0.65rem; color: var(--text-primary); }
 
-/* Estilos para destacar o imposto */
 .editable-label {
   display: flex;
   align-items: center;
@@ -258,7 +248,6 @@
   box-shadow: 0 0 0 2px rgba(67, 180, 224, 0.2);
 }
 
-/* --- Estilo para a caixa de informação (tooltip) --- */
 .info-tooltip {
   display: inline-flex;
   align-items: center;
@@ -277,40 +266,31 @@
   color: var(--accent-blue);
 }
 
-/* ============================================== */
-/* === ESTILOS PARA LINHAS DE PRODUTOS === */
-/* ============================================== */
-
-/* Base para todas as linhas de produto */
 .product-row {
   display: grid;
-  gap: 15px; /* Espaçamento entre os campos */
-  align-items: flex-end; /* Alinha os campos na base, o que fica bom com os labels em cima */
+  gap: 15px; 
+  align-items: flex-end; 
   margin-bottom: 15px;
 }
 
-/* Define as colunas para a linha do PRODUTO PRINCIPAL */
-.main-product-row {
-  grid-template-columns: 1fr 130px 80px; /* Nome (flexível), Preço (130px), Quantidade (80px) */
-}
 
-/* Define as colunas para as linhas dos PRODUTOS ADICIONAIS (kit) */
+.main-product-row {
+  grid-template-columns: 1fr 130px 80px; 
+}
 .kit-item-row {
-  grid-template-columns: 1fr 130px 80px auto; /* Nome (flexível), Preço, Qtd, e o botão de remover (tamanho automático) */
-  padding: 15px;
-  background-color: rgba(10, 25, 47, 0.5); /* Fundo para destacar o item do kit */
+  grid-template-columns: 1fr 130px 80px auto;
+  background-color: rgba(10, 25, 47, 0.5); 
   border: 1px solid var(--border-light);
   border-radius: 8px;
 }
 
-/* Ajusta o form-group dentro das linhas para não ter margem extra */
 .product-row .form-group {
   margin-bottom: 0;
 }
 
-/* Ajusta o botão de remover */
+
 .kit-item-row .remove-product-button {
   width: 100%;
-  height: 35px; /* Mesma altura dos inputs */
+  height: 35px;
   padding: 5px;
 }

@@ -1,41 +1,32 @@
-/* Container principal do carrossel, com margem inferior */
 .ad-carousel-container {
   width: 100%;
-  margin-bottom: 30px; /* Espaço entre o carrossel e o título da calculadora */
+  margin-bottom: 30px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Estilo para cada slide */
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: var(--background-dark);
-
-  /* Centraliza a imagem perfeitamente */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Estilo para a imagem dentro do slide */
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
-  aspect-ratio: 16 / 5; /* Proporção widescreen, similar a uma capa de Facebook */
+  object-fit: cover;
+  aspect-ratio: 16 / 5;
 }
 
-
-/* --- Personalização das Setas e Bolinhas para combinar com seu tema --- */
-
-/* Cor das setas de navegação */
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--text-primary) !important;
-  background-color: rgba(10, 25, 47, 0.5); /* Fundo semi-transparente */
+  background-color: rgba(10, 25, 47, 0.5);
   border-radius: 50%;
   width: 44px !important;
   height: 44px !important;
@@ -47,20 +38,17 @@
   background-color: rgba(10, 25, 47, 0.8);
 }
 
-/* Ajusta o tamanho dos ícones dentro das setas */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 18px !important;
   font-weight: 900;
 }
 
-/* Cor das bolinhas de paginação */
 .swiper-pagination-bullet {
   background: var(--text-secondary) !important;
   opacity: 0.7;
 }
 
-/* Cor da bolinha ativa */
 .swiper-pagination-bullet-active {
   background: var(--accent-blue) !important;
   opacity: 1;

@@ -1,7 +1,5 @@
-/* --- Seção de Ferramentas Exclusivas --- */
-
 .tools-section {
-    background-color: #121212; /* Fundo escuro da seção */
+    background-color: #121212;
     color: #ffffff;
 }
 
@@ -11,12 +9,12 @@
 }
 
 .section-subtitle {
-    color: #adb5bd; /* Cinza claro para o subtítulo */
+    color: #adb5bd;
     font-size: 1.1rem;
 }
 
 .tools-card {
-    background-color: #1e293b; /* Cor de fundo do card, um azul escuro */
+    background-color: #1e293b;
     border: 1px solid #334155;
     border-radius: 12px;
     padding: 2rem;
@@ -38,7 +36,7 @@
 }
 
 .card-logo {
-    height: 35px; /* Ajuste o tamanho do logo conforme necessário */
+    height: 35px;
     width: auto;
 }
 
@@ -77,7 +75,7 @@
 }
 
 .tools-card .list-unstyled .bi {
-    color: #10b981; /* Cor do ícone de check */
+    color: #10b981;
     margin-right: 0.5rem;
 }
 

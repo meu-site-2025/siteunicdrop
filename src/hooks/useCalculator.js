@@ -94,7 +94,6 @@ export const useCalculator = (platform) => {
   };
 
   const generateAIDescription = async () => {
-    // Validação inicial no frontend
     if (!products || products.length === 0 || !products[0].name) {
       setAiDescription("Por favor, selecione ou digite um produto primeiro para gerar a descrição.");
       return;
@@ -104,7 +103,6 @@ export const useCalculator = (platform) => {
     setAiDescription("Gerando descrição, por favor, aguarde...");
     
     try {
-      // Prepara os dados no NOVO formato que o backend espera
       const payload = {
         products: products.map(p => ({ 
           name: p.name, 
@@ -116,12 +114,10 @@ export const useCalculator = (platform) => {
       const response = await fetch("https://unicdrop-backend.onrender.com/api/generate-description", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // Envia o payload completo e formatado corretamente
         body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
-        // Se a resposta não for OK, tenta ler a mensagem de erro do backend
         const errorData = await response.json();
         throw new Error(errorData.error || "Erro na comunicação com a API.");
       }
@@ -130,7 +126,6 @@ export const useCalculator = (platform) => {
       setAiDescription(data.description || "");
     } catch (error) {
       console.error("Erro na chamada da API:", error);
-      // Mostra uma mensagem mais específica se possível
       setAiDescription(`Ocorreu um erro: ${error.message} Tente novamente mais tarde.`);
     } finally {
       setIsGenerating(false);
@@ -178,12 +173,6 @@ export const useCalculator = (platform) => {
 
     let finalPrice = parseFloat(String(recommendedPrice).replace(/[^0-9,.-]/g, "").replace(",", ".")) || 0;
     let cleanDesiredProfitMargin = (parseFloat(String(desiredProfitMargin).replace(/[^0-9,.-]/g, "").replace(",", ".")) / 100) || 0;
-
-    // =========================================================================
-    // === ALTERAÇÃO PRINCIPAL AQUI ===
-    // Agora, o cálculo direto (que define o preço de venda) roda sempre que o 
-    // último campo alterado NÃO FOR o próprio 'recommendedPrice'.
-    // =========================================================================
     if (lastUpdatedField.current !== 'recommendedPrice') {
       const totalFeesAndMargin = commissionRate + cleanTaxRate + cleanDesiredProfitMargin;
       if (totalFeesAndMargin >= 1) {
@@ -232,9 +221,7 @@ export const useCalculator = (platform) => {
     const taxValue = finalPrice * cleanTaxRate;
     const expectedProfit = finalPrice - kitSubtotal - commissionValue - taxValue - fixedFee - shippingCost;
     const profitMarginPercent = finalPrice > 0 ? (expectedProfit / finalPrice) * 100 : 0;
-    
-    // O cálculo reverso (que define o lucro) só roda se o último campo
-    // alterado FOI o 'recommendedPrice'.
+
     if (lastUpdatedField.current === 'recommendedPrice') {
       setDesiredProfitMargin(profitMarginPercent.toFixed(2));
     }

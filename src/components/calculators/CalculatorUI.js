@@ -79,7 +79,7 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                         <input type="number" min="1" value={product.quantity} onChange={(e) => handleNumericInputChange(e, (val) => setProducts(products.map((p, i) => i === index ? { ...p, quantity: val } : p)), "productQuantity")} placeholder="1" />
                       </div>
                       <div className="form-group">
-                         <button type="button" className="remove-product-button" onClick={() => setProducts(products.filter((_, i) => i !== index))}><i className="bi bi-trash"></i> Remover</button>
+                         <button type="button" className="remove-product-button" onClick={() => setProducts(products.filter((_, i) => i !== index))}><i className="bi bi-trash"></i></button>
                       </div>
                     </div>
                   );
@@ -92,8 +92,6 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                   </div>
                 )}
                 
-                {/* --- CAMPO DE CUSTO DO FRETE FOI REMOVIDO DAQUI --- */}
-                
                 <div className="form-group"><label>Lucro desejado (%)</label><div className="input-with-icon-right"><input type="text" value={desiredProfitMargin} onChange={(e) => handleNumericInputChange(e, setDesiredProfitMargin, "desiredProfitMargin")} /><span>%</span></div></div>
 
                 <div className="form-group"><button className="clear-calculator-button" onClick={resetCalculator}><i className="bi bi-arrow-counterclockwise"></i> Limpar Calculadora</button></div>
@@ -102,7 +100,7 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
             <div className="col-lg-5">
               <div className="result-panel" ref={resultPanelRef}>
                 <div className="result-header">
-                  <div className="result-label">Lucro Esperado</div>
+                  <div className="result-label">Lucro Líquido</div>
                   <div className={`subtotal-price ${result.expectedProfit >= 0 ? 'profit-item' : 'loss-item'}`}>
                     {formatCurrency(result.expectedProfit)}
                   </div>
@@ -133,10 +131,8 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                 </div>
                 <hr className="result-divider" />
                 <ul className="result-breakdown">
-                  {result.breakdown
-                    .filter(item => !item.isProfit)
-                    .map((item, index) => {
-                      if (item.isTax) { // Para o imposto
+                  {result.breakdown.map((item, index) => {
+                      if (item.isTax) {
                         return (
                           <li key={index}>
                             <span className="editable-label">
@@ -154,7 +150,6 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                         );
                       }
                       
-                      // --- LÓGICA ADICIONADA PARA O FRETE EDITÁVEL ---
                       if (item.isShipping) {
                         return (
                           <li key={index}>
@@ -171,9 +166,8 @@ export const CalculatorUI = ({ title, platform, calculator }) => {
                           </li>
                         );
                       }
-
                       return (
-                        <li key={index}>
+                        <li key={index} className={item.isProfit ? (item.value >= 0 ? "profit-item" : "loss-item") : ""}>
                           <span>{item.name}</span>
                           <span>{formatCurrency(item.value)}</span>
                         </li>
